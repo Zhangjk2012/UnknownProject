@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.Callable;
 
+import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -12,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.view.RedirectView;
 
+import com.zhang.dao.UserDao;
 import com.zhang.vo.User;
 
 /**  
@@ -21,6 +23,9 @@ import com.zhang.vo.User;
 @Controller
 public class TestContrller {
 
+    @Resource
+    private UserDao userDao;
+    
     @RequestMapping(value="test")
     public Callable<String> processUpload(final String sss) {
         return new Callable<String>() {
@@ -30,6 +35,20 @@ public class TestContrller {
             }
         };
     }
+    
+    @RequestMapping("save")
+    public void save() {
+        com.zhang.entity.User user1 = new com.zhang.entity.User();
+        user1.setUserName("Zhang");
+        user1.setPassword("pwd");
+        userDao.save(user1);
+    }
+    
+    @RequestMapping("find")
+    public void find() {
+        userDao.find();
+    }
+    
     
     @RequestMapping(value="test1")
     public RedirectView test() {
