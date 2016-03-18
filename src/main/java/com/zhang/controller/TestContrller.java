@@ -1,5 +1,6 @@
 package com.zhang.controller;
 
+import java.lang.management.ManagementFactory;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.Callable;
@@ -52,6 +53,10 @@ public class TestContrller {
     
     @RequestMapping(value="test1")
     public RedirectView test() {
+        System.out.println(UserDao.class.getClassLoader());
+        System.out.println(userDao.getClass().getClassLoader());
+        System.out.println(UserDao.map == userDao.map);
+        System.out.println(UserDao.map.equals(userDao.map));
         return new RedirectView("index.jsp");
     }
     
@@ -70,4 +75,14 @@ public class TestContrller {
         users.add(user);  
         return new ModelAndView("test1", "users", users);  
     } 
+    
+    @RequestMapping("tt")
+    public void tt() {
+        String name = ManagementFactory.getRuntimeMXBean().getName();    
+        System.out.println(name);    
+        String pid = name.split("@")[0];    
+        System.out.println("Pid is:" + pid); 
+    }
+    
+    
 }

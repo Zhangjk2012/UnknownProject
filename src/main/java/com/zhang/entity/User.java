@@ -27,11 +27,11 @@ public class User {
     
     @NotNull(message="{message.username.empty}")
     @Size(min = 2, max = 140,message="{message.username.length}")
-    private String userName;//发布内容
+    private String userName;
     
     @NotNull(message="{message.password.empty}")
     @Size(min = 2, max = 140,message="{message.password.length}")
-    private String password;//七牛图片信息
+    private String password;
 
     public String getUserName() {
         return userName;

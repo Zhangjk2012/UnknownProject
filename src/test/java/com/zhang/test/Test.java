@@ -1,5 +1,8 @@
 package com.zhang.test;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.annotation.Resource;
 
 import org.junit.runner.RunWith;
@@ -27,9 +30,15 @@ public class Test {
         user1.setUserName("Zhang");
         user1.setPassword("pwd");
         
-        userDao.find();
-        userDao.find();
-//        userDao.save(user2);
+        com.zhang.entity.Test t = new com.zhang.entity.Test();
+        
+        List<String> s = new ArrayList<String>();
+        s.add("1");
+        s.add("3");
+        
+        t.setAddress(s);
+        
+        userDao.save(t);
 //        userDao.save(user3);
     }
     

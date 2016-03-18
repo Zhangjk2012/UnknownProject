@@ -1,5 +1,8 @@
 package com.zhang.dao;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import javax.annotation.Resource;
 
 import org.hibernate.CacheMode;
@@ -16,11 +19,17 @@ import com.zhang.entity.User;
 @Repository
 public class UserDao {
     
+    public final static Map<String, String> map = new HashMap<String, String>();
+    
+    static {
+        System.out.println("ssssssssssssssss");
+    }
+    
     @Resource
     private SessionFactory sessionFactory;
     
     @Transactional
-    public User save(User u) {
+    public Object save(Object u) {
         sessionFactory.getCurrentSession().save(u);
         return u;
     }
