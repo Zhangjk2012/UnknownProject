@@ -671,3 +671,9 @@ Caused by: com.mysql.jdbc.exceptions.jdbc4.MySQLIntegrityConstraintViolationExce
 2016-03-11 10:02:23,757 INFO [org.hibernate.tool.schema.extract.internal.InformationExtractorJdbcDatabaseMetaDataImpl] - HHH000262: Table not found: Test
 2016-03-11 10:02:24,494 INFO [org.springframework.orm.hibernate5.HibernateTransactionManager] - Using DataSource [com.mchange.v2.c3p0.ComboPooledDataSource[ identityToken -> 1hge13v9frkzcw113emspo|4a18a8c0, dataSourceName -> 1hge13v9frkzcw113emspo|4a18a8c0 ]] of Hibernate SessionFactory for HibernateTransactionManager
 2016-03-11 10:02:24,756 INFO [org.springframework.context.support.GenericApplicationContext] - Closing org.springframework.context.support.GenericApplicationContext@727f6c7d: startup date [Fri Mar 11 10:02:21 CST 2016]; root of context hierarchy
+2016-06-28 15:35:28,528 INFO [akka.event.slf4j.Slf4jLogger] - Slf4jLogger started
+2016-06-28 15:35:28,593 INFO [MyActor] - received test
+2016-06-28 15:35:28,594 INFO [MyActor] - received test
+2016-06-28 15:35:28,594 INFO [MyActor] - received test
+2016-06-28 15:35:28,594 INFO [MyActor] - received test
+2016-06-28 15:35:28,594 INFO [MyActor] - received test
