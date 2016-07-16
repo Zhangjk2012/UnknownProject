@@ -10,10 +10,12 @@
   
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-    <spring-version>4.2.5.RELEASE</spring-version>  
+    <spring-version>4.2.6.RELEASE</spring-version>
     <hibernate-version>5.1.0.Final</hibernate-version>
     <scala-version>2.11.8</scala-version>
     <akka-version>2.4.7</akka-version>
+    <mongodb-version>3.2.2</mongodb-version>
+    <spring-ongodb-version>1.9.2.RELEASE</spring-ongodb-version>
   </properties>
   
   
@@ -206,6 +208,16 @@
           <version>${akka-version}</version>
       </dependency>
 
+      <dependency>
+          <groupId>org.mongodb</groupId>
+          <artifactId>mongo-java-driver</artifactId>
+          <version>${mongodb-version}</version>
+      </dependency>
+      <dependency>
+          <groupId>org.springframework.data</groupId>
+          <artifactId>spring-data-mongodb</artifactId>
+          <version>${spring-mongodb-version}</version>
+      </dependency>
     <dependency>
       <groupId>junit</groupId>
       <artifactId>junit</artifactId>
