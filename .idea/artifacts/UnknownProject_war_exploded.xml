@@ -61,8 +61,6 @@
           <element id="library" level="project" name="Maven: org.scala-lang.modules:scala-java8-compat_2.11:0.7.0" />
           <element id="library" level="project" name="Maven: com.typesafe.akka:akka-slf4j_2.11:2.4.7" />
           <element id="library" level="project" name="Maven: org.mongodb:mongo-java-driver:3.2.2" />
-          <element id="library" level="project" name="Maven: org.springframework.data:spring-data-mongodb:1.9.2.RELEASE" />
-          <element id="library" level="project" name="Maven: org.springframework.data:spring-data-commons:1.12.2.RELEASE" />
         </element>
       </element>
       <element id="directory" name="META-INF">

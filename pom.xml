@@ -15,7 +15,6 @@
     <scala-version>2.11.8</scala-version>
     <akka-version>2.4.7</akka-version>
     <mongodb-version>3.2.2</mongodb-version>
-    <spring-ongodb-version>1.9.2.RELEASE</spring-ongodb-version>
   </properties>
   
   
@@ -212,11 +211,6 @@
           <groupId>org.mongodb</groupId>
           <artifactId>mongo-java-driver</artifactId>
           <version>${mongodb-version}</version>
-      </dependency>
-      <dependency>
-          <groupId>org.springframework.data</groupId>
-          <artifactId>spring-data-mongodb</artifactId>
-          <version>${spring-mongodb-version}</version>
       </dependency>
     <dependency>
       <groupId>junit</groupId>
