@@ -5,6 +5,7 @@ import java.util.List;
 
 import javax.annotation.Resource;
 
+import com.zhang.utils.RedisExecutor;
 import org.junit.runner.RunWith;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
@@ -41,6 +42,13 @@ public class Test {
         userDao.save(t);
 //        userDao.save(user3);
     }
-    
+
+    @Resource(name="redisExecutor")
+    RedisExecutor executor;
+
+    @org.junit.Test
+    public void test() {
+        executor.set("test","test");
+    }
     
 }

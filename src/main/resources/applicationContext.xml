@@ -3,29 +3,22 @@
 	   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	   xmlns:aop="http://www.springframework.org/schema/aop"
 	   xmlns:context="http://www.springframework.org/schema/context"
-	   xmlns:jpa="http://www.springframework.org/schema/data/jpa"
-	   xmlns:mvc="http://www.springframework.org/schema/mvc"
 	   xmlns:tx="http://www.springframework.org/schema/tx"
-	   xmlns:util="http://www.springframework.org/schema/util"
-  	   xsi:schemaLocation="http://www.springframework.org/schema/beans 
+  	   xsi:schemaLocation="http://www.springframework.org/schema/beans
   	   					   http://www.springframework.org/schema/beans/spring-beans.xsd
     					   http://www.springframework.org/schema/aop 
     					   http://www.springframework.org/schema/aop/spring-aop.xsd
 					       http://www.springframework.org/schema/context 
 					       http://www.springframework.org/schema/context/spring-context.xsd
-					       http://www.springframework.org/schema/mvc 
-					       http://www.springframework.org/schema/mvc/spring-mvc.xsd
-					       http://www.springframework.org/schema/tx 
-					       http://www.springframework.org/schema/tx/spring-tx.xsd
-					       http://www.springframework.org/schema/util 
-					       http://www.springframework.org/schema/util/spring-util.xsd">
+					       http://www.springframework.org/schema/tx
+					       http://www.springframework.org/schema/tx/spring-tx.xsd">
    
     <context:component-scan base-package="com.zhang.service,com.zhang.dao">
         <context:exclude-filter type="annotation" expression="org.springframework.stereotype.Controller"/>
     </context:component-scan>
     <context:annotation-config />
     
-    <context:property-placeholder location="classpath:db.properties" />
+    <context:property-placeholder location="classpath:db.properties,redis.properties" />
     
     <!-- 数据库连接池c3p0配置 -->
     <bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource" destroy-method="close">
@@ -104,5 +97,39 @@
     </aop:config>
     
     <tx:annotation-driven transaction-manager="transactionManager" proxy-target-class="true"/>
-    
+
+    <!-- 这个是配置Redis集群的。 -->
+    <bean id="shardedJedisPool" class="redis.clients.jedis.ShardedJedisPool">
+        <constructor-arg index="0" ref="jedisPoolConfig"/>
+        <constructor-arg index="1">
+            <list>
+                <bean name="master" class="redis.clients.jedis.JedisShardInfo">
+                    <constructor-arg index="0" value="${redis.master.host}"/>
+                    <constructor-arg index="1" value="${redis.master.port}" type="int"/>
+                </bean>
+                <!--<bean name="slaver" class="redis.clients.jedis.JedisShardInfo">
+                    <constructor-arg index="0" value="${redis.slaver.host}"/>
+                    <constructor-arg index="1" value="${redis.slaver.port}" type="int"/>
+                </bean>-->
+            </list>
+        </constructor-arg>
+    </bean>
+
+    <bean id="jedisPoolConfig" class="redis.clients.jedis.JedisPoolConfig">
+        <property name="maxTotal" value="2048" />
+        <property name="maxIdle" value="200" />
+        <property name="numTestsPerEvictionRun" value="1024"/>
+        <property name="timeBetweenEvictionRunsMillis" value="30000" />
+        <property name="minEvictableIdleTimeMillis" value="-1" />
+        <property name="softMinEvictableIdleTimeMillis" value="10000" />
+        <property name="maxWaitMillis" value="1500"/>
+        <property name="testOnBorrow" value="true" />
+        <property name="testWhileIdle" value="true"/>
+        <property name="testOnReturn" value="false"/>
+        <property name="jmxEnabled" value="true"/>
+        <property name="jmxNamePrefix" value="youyuan"/>
+        <property name="blockWhenExhausted" value="false"/>
+    </bean>
+
+
 </beans>
