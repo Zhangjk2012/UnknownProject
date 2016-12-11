@@ -1,0 +1,10 @@
+syntax = "proto2";
+option java_outer_classname = "TeacherModel";
+option java_package = "com.zhang.model";
+//option optimize_for = LITE_RUNTIME;
+message Teacher {
+    required string name = 1;
+    required int32 age = 2;
+    required int32 sex = 3;
+    optional string address = 4;
+}

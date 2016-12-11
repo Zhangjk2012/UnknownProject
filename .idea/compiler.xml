@@ -29,4 +29,9 @@
       <module name="UnknownProject" target="1.8" />
     </bytecodeTargetLevel>
   </component>
+  <component name="SbtSettings">
+    <option name="sbtLauncherJarPath" value="$USER_HOME$/software/sbt/bin/sbt-launch.jar" />
+    <option name="sbtLauncherVmParameters" value="-Dsbt.ivy.home=/home/zjk/.ivy2 -Dsbt.global.base=/home/zjk/.sbt -Dsbt.repository.config=/home/zjk/software/sbt/conf/repo.conf -Dsbt.log.format=true" />
+    <option name="useApplicationSettings" value="false" />
+  </component>
 </project>
